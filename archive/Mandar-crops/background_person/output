@@ -1,0 +1,11 @@
+mandar@mandar-VirtualBox:~/Desktop/Thesis/Mandar-crops/background_person$ glab -v -c . -n 200 -p imprint -s -r back_person_result.dat
+Imprinting 200 prototypes
+  done: 441.471253157 s
+Train SVM on 183 images
+  and testing on 185 images
+  done: 0.603081941605 s
+Time to compute feature vectors: 2532.85958409 s
+Train Accuracy: 0.945
+Test Accuracy: 0.816
+mandar@mandar-VirtualBox:~/Desktop/Thesis/Mandar-crops/background_person$ 
+

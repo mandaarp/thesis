@@ -1,0 +1,10 @@
+mandar@mandar-VirtualBox:~/Desktop/Thesis/Mandar-crops/background_dog$ glab -v -c . -n 200 -p imprint -s -r back_dog_result.dat
+Imprinting 200 prototypes
+  done: 256.346330166 s
+Train SVM on 189 images
+  and testing on 191 images
+  done: 0.725256919861 s
+Time to compute feature vectors: 994.239206076 s
+Train Accuracy: 0.899
+Test Accuracy: 0.770
+

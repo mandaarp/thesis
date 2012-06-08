@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+# Copyright (c) 2011 Mick Thomure
+# All rights reserved.
+#
+# Please see the file COPYING in this distribution for usage
+# terms.
+
+from glimpse.pools.gearman_cluster.main import main
+
+main()
