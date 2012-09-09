@@ -1,0 +1,3 @@
+[submodule "code/glimpse"]
+	path = code/glimpse
+	url = https://github.com/mthomure/glimpse-project
