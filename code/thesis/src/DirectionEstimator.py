@@ -25,25 +25,45 @@ class DirectionEstimator(object):
         self.svm_person_back = None
         self.svm_person_forward = None
         
-    def generate_svm(self):
+    def generate_svm(self, testing_images_path=None):
         
         print "generating SVMs - one for each direction ..."
         
-        print "generating " + value.STR_PERSON_BACK + " SVM ..."
-        self.svm_person_back = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_BACK), 
+        if testing_images_path is None:
+            
+            print "generating " + value.STR_PERSON_BACK + " SVM ..."
+            self.svm_person_back = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_BACK), 
                                        os.path.join(self.testing_images_path, value.STR_PERSON_BACK))
         
-        print "generating " + value.STR_PERSON_FORWARD + " SVM ..."
-        self.svm_person_forward = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_FORWARD),
-                                          os.path.join(self.testing_images_path, value.STR_PERSON_FORWARD))
+            print "generating " + value.STR_PERSON_FORWARD + " SVM ..."
+            self.svm_person_forward = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_FORWARD),
+                                              os.path.join(self.testing_images_path, value.STR_PERSON_FORWARD))
+            
+            print "generating " + value.STR_PERSON_LEFT + " SVM ..."
+            self.svm_person_left = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_LEFT),
+                                           os.path.join(self.testing_images_path, value.STR_PERSON_LEFT))
+            
+            print "generating " + value.STR_PERSON_RIGHT + " SVM ..."
+            self.svm_person_right = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_RIGHT),
+                                            os.path.join(self.testing_images_path, value.STR_PERSON_RIGHT))
         
-        print "generating " + value.STR_PERSON_LEFT + " SVM ..."
-        self.svm_person_left = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_LEFT),
-                                       os.path.join(self.testing_images_path, value.STR_PERSON_LEFT))
+        else:
+            
+            print "generating " + value.STR_PERSON_BACK + " SVM ..."
+            self.svm_person_back = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_BACK), 
+                                           testing_images_path)
         
-        print "generating " + value.STR_PERSON_RIGHT + " SVM ..."
-        self.svm_person_right = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_RIGHT),
-                                        os.path.join(self.testing_images_path, value.STR_PERSON_RIGHT))
+            print "generating " + value.STR_PERSON_FORWARD + " SVM ..."
+            self.svm_person_forward = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_FORWARD),
+                                              testing_images_path)
+            
+            print "generating " + value.STR_PERSON_LEFT + " SVM ..."
+            self.svm_person_left = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_LEFT),
+                                           testing_images_path)
+            
+            print "generating " + value.STR_PERSON_RIGHT + " SVM ..."
+            self.svm_person_right = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_RIGHT),
+                                            testing_images_path)
         
     def imprint_s2_prototypes(self, num_of_prototypes):
         
@@ -77,20 +97,36 @@ class DirectionEstimator(object):
         print "training " + value.STR_PERSON_RIGHT + " SVM ..."
         self.svm_person_right.train()
     
+    def validate(self):
+        
+        print "validating each SVM ..."
+        
+        print "validating " + value.STR_PERSON_BACK + "SVM ..."
+        self.svm_person_back.test()
+        
+        print "validating " + value.STR_PERSON_FORWARD + "SVM ..."
+        self.svm_person_forward.test()
+        
+        print "validating " + value.STR_PERSON_LEFT + "SVM ..."
+        self.svm_person_left.test()
+        
+        print "validating " + value.STR_PERSON_RIGHT + "SVM ..."
+        self.svm_person_right.test()
+    
     def test(self):
         
         print "testing each SVM ..."
         
-        print "testing " + value.STR_PERSON_BACK + "SVM ..."
+        print "running " + value.STR_PERSON_BACK + "SVM on test images ..."
         self.svm_person_back.test()
         
-        print "testing " + value.STR_PERSON_FORWARD + "SVM ..."
+        print "running " + value.STR_PERSON_FORWARD + "SVM on test images ..."
         self.svm_person_forward.test()
         
-        print "testing " + value.STR_PERSON_LEFT + "SVM ..."
+        print "running " + value.STR_PERSON_LEFT + "SVM on test images ..."
         self.svm_person_left.test()
         
-        print "testing " + value.STR_PERSON_RIGHT + "SVM ..."
+        print "running " + value.STR_PERSON_RIGHT + "SVM on test images ..."
         self.svm_person_right.test()
     
     def print_decision_values(self):
