@@ -5,7 +5,8 @@ Created on Nov 30, 2012
 '''
 
 TRAINING_IMAGES_PATH = "/home/mandar/thesis/demo/images/train"
-TESTING_IMAGES_PATH = "/home/mandar/thesis/demo/images/test/"
+TESTING_IMAGES_PATH = "/home/mandar/thesis/demo/images/test"
+ALL_TESTING_IMAGES_PATH = "/home/mandar/thesis/demo/images/test/all"
 
 STR_PERSON_BACK = "person-back"
 STR_PERSON_FORWARD = "person-forward"

@@ -145,6 +145,13 @@ class DirectionEstimator(object):
         print "decision values for SVM: " + value.STR_PERSON_RIGHT
         print self.svm_person_right.testing_decision_values
         
-    def dump_decision_values(self, file_path):
-        pass
+    def dump_experiments(self, file_path):
         
+        print "dumping experiments at " + file_path + " ..."
+        self.svm_person_back.experiment.Store(os.path.join(file_path, value.STR_PERSON_BACK))
+        self.svm_person_forward.experiment.Store(os.path.join(file_path, value.STR_PERSON_FORWARD))
+        self.svm_person_left.experiment.Store(os.path.join(file_path, value.STR_PERSON_LEFT))
+        self.svm_person_right.experiment.Store(os.path.join(file_path, value.STR_PERSON_RIGHT))
+        
+    def generate_decision_data(self):
+        pass

@@ -42,3 +42,8 @@ class SVM(object):
         print "testing accuracy: " + str(self.testing_accuracy)
         
         return self.testing_decision_values
+    
+    def generate_image_decision_value_pairs(self):
+        
+        pass
+        

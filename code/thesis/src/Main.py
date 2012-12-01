@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     direction_estimator = de.DirectionEstimator(value.TRAINING_IMAGES_PATH, value.TESTING_IMAGES_PATH)
     
-    direction_estimator.generate_svm()
+    direction_estimator.generate_svm(value.ALL_TESTING_IMAGES_PATH)
     
     direction_estimator.imprint_s2_prototypes(value.NUM_OF_PROTOTYPES)
     
@@ -30,4 +30,6 @@ if __name__ == '__main__':
     direction_estimator.test()
     
     direction_estimator.print_decision_values()
+
+    direction_estimator.dump_experiments(".")
 
