@@ -5,6 +5,7 @@ Created on Nov 30, 2012
 '''
 
 from glimpse.glab import *
+from glimpse.util import svm
 
 class SVM(object):
     '''
@@ -21,6 +22,7 @@ class SVM(object):
         self.training_accuracy = None
         self.testing_accuracy = None
         self.testing_decision_values = None
+        self.image_to_decision_value = {}
         SetTrainTestSplitFromDirs(self.training_images_path, self.testing_images_path)
         self.experiment = GetExperiment()
         
@@ -37,11 +39,14 @@ class SVM(object):
     def test(self):
         
         print "testing the SVM ..."
-        self.testing_accuracy = self.experiment.TestSvm()
-        self.testing_decision_values = self.experiment.test_results['decision_values']
-        print "testing accuracy: " + str(self.testing_accuracy)
+        test_features, test_labels = svm.PrepareFeatures(self.experiment.test_features)
+        self.testing_decision_values = self.experiment.classifier.decision_function(test_features)
         
-        return self.testing_decision_values
+        self.testing_decision_values = self.testing_decision_values.tolist()
+        for index in range(len(self.testing_decision_values)):
+            self.image_to_decision_value[self.experiment.test_images[1][index]] = self.testing_decision_values[index][0]
+        
+        return self.image_to_decision_value
     
     def generate_image_decision_value_pairs(self):
         

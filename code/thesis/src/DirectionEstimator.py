@@ -31,6 +31,8 @@ class DirectionEstimator(object):
         
         if testing_images_path is None:
             
+            print "in validation mode ..."
+            
             print "generating " + value.STR_PERSON_BACK + " SVM ..."
             self.svm_person_back = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_BACK), 
                                        os.path.join(self.testing_images_path, value.STR_PERSON_BACK))
@@ -49,21 +51,23 @@ class DirectionEstimator(object):
         
         else:
             
+            print "in test mode ..."
+            
             print "generating " + value.STR_PERSON_BACK + " SVM ..."
             self.svm_person_back = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_BACK), 
-                                           testing_images_path)
+                                           os.path.join(testing_images_path, value.STR_PERSON_BACK))
         
             print "generating " + value.STR_PERSON_FORWARD + " SVM ..."
             self.svm_person_forward = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_FORWARD),
-                                              testing_images_path)
+                                              os.path.join(testing_images_path, value.STR_PERSON_FORWARD))
             
             print "generating " + value.STR_PERSON_LEFT + " SVM ..."
             self.svm_person_left = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_LEFT),
-                                           testing_images_path)
+                                           os.path.join(testing_images_path, value.STR_PERSON_LEFT))
             
             print "generating " + value.STR_PERSON_RIGHT + " SVM ..."
             self.svm_person_right = svm.SVM(os.path.join(self.training_images_path, value.STR_PERSON_RIGHT),
-                                            testing_images_path)
+                                            os.path.join(testing_images_path, value.STR_PERSON_RIGHT))
         
     def imprint_s2_prototypes(self, num_of_prototypes):
         
