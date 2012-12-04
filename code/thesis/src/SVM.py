@@ -23,12 +23,12 @@ class SVM(object):
         self.testing_accuracy = None
         self.testing_decision_values = None
         self.image_to_decision_value = {}
-        SetTrainTestSplitFromDirs(self.training_images_path, self.testing_images_path)
-        self.experiment = GetExperiment()
+        self.experiment = SetExperiment()
+        self.experiment.SetTrainTestSplitFromDirs(self.training_images_path, self.testing_images_path)
         
     def configure_svm(self, num_of_prototypes):
         self.num_of_prototypes = num_of_prototypes
-        ImprintS2Prototypes(self.num_of_prototypes)
+        self.experiment.ImprintS2Prototypes(self.num_of_prototypes)
         
     def train(self):
         
