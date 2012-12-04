@@ -141,13 +141,13 @@ class DirectionEstimator(object):
         print self.svm_person_back.image_to_decision_value
         
         print "image-to-decision-values for SVM: " + value.STR_PERSON_FORWARD
-        print self.svm_person_forward.image_to_decision_value
+        print self.svm_person_forward.testing_decision_values
 
         print "image-to-decision-values for SVM: " + value.STR_PERSON_LEFT
-        print self.svm_person_left.image_to_decision_value
+        print self.svm_person_left.testing_decision_values
         
         print "image-to-decision-values for SVM: " + value.STR_PERSON_RIGHT
-        print self.svm_person_right.image_to_decision_value
+        print self.svm_person_right.testing_decision_values
         
     def dump_experiments(self, file_path):
         
